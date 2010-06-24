@@ -12,9 +12,41 @@ class User extends M {
 		return $this->db->getQuery();
 	}
 	
-	function TestInsert($table,$data){
-	    $this->db->insert($table,$data);
+	function TestUpdate($table,$data,$id){
+	    $this->db->update($table, $data)->where('id', $id);
 	    return $this->db->getQuery();
+	}
+	
+	function loginUser($user){
+	    $user['password'] = md5($user['password']);
+	    // Validate that the user is real
+	    $this->db->select('id,username,password')->from('wgb_users')->where('username', $user['username'])->where('password', $user['password']);
+	    $query = $this->db->getQuery();
+	    $num = mysql_num_rows($query);
+	    if($num == 1){
+	        // User was found now set sessions and login
+	        $doLogin = $this->dologin($user = mysql_fetch_array($query));
+	        return $doLogin;
+	    }else{
+	        // User was not found in the database.
+	        return FALSE;
+	    }
+	}
+	
+	private function dologin($user){
+	    // Set the session ID in the database
+	    $data = array('session_id' => session_id());
+	    $this->db->update('wgb_users', $data)->where('id', $user['id']);
+	    $query1 = $this->db->getQuery();
+	    echo "RESULT: ";
+	    var_dump($query1 = mysql_fetch_array($query1));
+	    exit;
+	    if($query){
+	        $user['session_id'] = $data['session_id'];
+    	    $_SESSION['User'] = $user;
+    	    return TRUE;
+	    }
+	    return FALSE;
 	}
 	
 }

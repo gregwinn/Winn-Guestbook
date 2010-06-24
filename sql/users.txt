@@ -1,0 +1,10 @@
+CREATE TABLE `winn_guestbook`.`wgb_users` (
+	`id` int NOT NULL AUTO_INCREMENT,
+	`username` VARCHAR(45) NOT NULL,
+	`email` VARCHAR(100) NOT NULL,
+	`password` TEXT NOT NULL,
+	`status` int NOT NULL DEFAULT '1',
+	`level` int NOT NULL DEFAULT '1',
+	`created_at` DATETIME NOT NULL,
+	PRIMARY KEY (`id`)
+) ENGINE=`InnoDB`;

@@ -68,7 +68,7 @@ class db {
 	
 	function update($table,$data){
 	    $updateArray = $this->update;
-	    foreach($updateArray as $key => $val){
+	    foreach($data as $key => $val){
 	        $updateArray[$key] = $val;
 	    }
 	    $this->update = $updateArray;
@@ -102,7 +102,7 @@ class db {
 		}elseif(isset($this->insertTable)){
 		    return $this->getInsert();
 		}elseif(isset($this->updateTable)){
-		    
+		    return $this->getUpdate();
 		}else{
 		    return FALSE;
 		}
@@ -112,20 +112,22 @@ class db {
 	private function getUpdate(){
 	    $updateQ = '';
 	    $uc = 0;
-	    $updateCount = count($this->insert);
+	    $updateCount = count($this->update);
 	    foreach($this->update as $key => $val){
 	        $uc++;
 	        if($updateCount == $uc){
-	            $updateQ .= " " . $key . " = " . $val;
+	            $updateQ .= " " . $key . " = " . $this->sanisql($val);
 	        }else{
-	            $updateQ .= " " . $key . " = " . $val . ",";
+	            $updateQ .= " " . $key . " = " . $this->sanisql($val) . ",";
 	        }
 	    }
 	    
 	    $whereQ = $this->whereForm();
-	    //return mysql_query("INSERT INTO " . $this->insertTable . " SET" . $insertQ . ";");
+	    
+	    //$q = mysql_query("UPDATE " . $this->updateTable . " SET" . $updateQ . " " . $whereQ . ";");
+	    //return $this->checkforerror($q);
 	    // for debug
-	    return "UPDATE " . $this->insertTable . " SET" . $updateQ . ";";
+	    return "UPDATE " . $this->updateTable . " SET" . $updateQ . " " . $whereQ . ";";
 	}
 	
 	// For Inserts only do not call this direct always use getQuery()
@@ -136,9 +138,9 @@ class db {
 	    foreach($this->insert as $key => $val){
 	        $ic++;
 	        if($insertCount == $ic){
-	            $insertQ .= " " . $key . " = " . $val;
+	            $insertQ .= " " . $key . " = " . $this->sanisql($val);
 	        }else{
-	            $insertQ .= " " . $key . " = " . $val . ",";
+	            $insertQ .= " " . $key . " = " . $this->sanisql($val) . ",";
 	        }
 	    }
 	    return mysql_query("INSERT INTO " . $this->insertTable . " SET" . $insertQ . ";");
@@ -154,7 +156,9 @@ class db {
 			//return "SELECT " . $this->select . " FROM " . $this->from . ";";
 		}else{
 			$whereQ = $this->whereForm();
-			return mysql_query("SELECT " . $this->select . " FROM " . $this->from . " " . $whereQ . ";");
+			$q = mysql_query("SELECT " . $this->select . " FROM " . $this->from . " " . $whereQ . ";");
+			return $q;
+			mysql_close();
 			// for debug
 			//return "SELECT " . $this->select . " FROM " . $this->from . " " . $whereQ . ";";
 		}
@@ -172,6 +176,14 @@ class db {
 			$cw++;
 		}
 		return $whereQ;
+	}
+	
+	private function checkforerror($q){
+	    if(!mysql_error($q)){
+	        return TRUE;
+	    }else{
+	        return "ERROR";
+	    }
 	}
 }
 ?>

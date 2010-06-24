@@ -8,9 +8,12 @@
 		</div>
 	
 		<div class="content-box-content">
-		
-			<div class="notification information">Just click login to go forward.</div>
-		
+		    
+		    <?php if(isset($_GET['error'])){ ?>
+		        <div class="notification error">Login failed, try again.</div>
+		    <?php }else{ ?>
+			    <div class="notification information">Enter your username and password below.</div>
+		    <?php } ?>
 			<form action="guestbook.php?url=admin/dologin" method="post">
 				<p>
 					<label>Username</label>
