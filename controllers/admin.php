@@ -8,10 +8,8 @@ class Admin extends C {
 	}
 	
 	public function index(){
-		//echo $this->UsersModel->getAllUsers();
-		//while($row = mysql_fetch_array($this->UsersModel->getAllUsers())){
-		//	echo $row['username'];
-		//}
+	    $data = array('name' => 'Greg Winn', 'username' => 'gregwinn');
+		echo $this->UsersModel->TestInsert('users',$data);
 		//$this->layout_tamplate = 'views/layouts/admin.php';
 		//echo $this->render('views/admin/index.php');
 	}

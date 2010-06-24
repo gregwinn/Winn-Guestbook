@@ -12,5 +12,10 @@ class User extends M {
 		return $this->db->getQuery();
 	}
 	
+	function TestInsert($table,$data){
+	    $this->db->insert($table,$data);
+	    return $this->db->getQuery();
+	}
+	
 }
 ?>
