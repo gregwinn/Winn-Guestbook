@@ -1,0 +1,66 @@
+#header_buttons > a, #header_buttons .modal > a {
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-box-shadow: 0px 1px 0px #3190c2;
+	-moz-box-shadow: 0px 1px 0px #3190c2;
+}
+
+input[type="submit"] {
+	-webkit-box-shadow: 0px -1px 0px #0c2e5a;
+	-moz-box-shadow: 0px -1px 0px #0c2e5a;
+}
+
+.content-box, .content-box-content {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+.content-box-content {
+	-webkit-box-shadow: 0px 1px 0px #c4c4c4;
+	-moz-box-shadow: 0px 1px 0px #c4c4c4;
+}
+
+.content-box-header, .modalhead {
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+}
+
+.closed .content-box-header, .content-box-header ul, select, input, textarea, div.wysiwyg, .skinned-select, .modalbox {
+	-webkit-border-radius: 5px !important;
+	-moz-border-radius: 5px !important;
+}
+
+.closed .content-box-header {
+	-webkit-box-shadow: 0px 1px 0px #c4c4c4;
+}
+
+.content-box-header ul li:first-child a {
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-bottomleft: 5px;
+}
+
+.content-box-header ul li:last-child a {
+	-webkit-border-top-right-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-moz-border-radius-topright: 5px;
+	-moz-border-radius-bottomright: 5px;
+}
+
+.notification {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+.graybutton {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+.modalbox {
+	-webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+}

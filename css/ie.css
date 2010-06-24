@@ -1,0 +1,72 @@
+#content {
+	display: inline-block;
+	padding-top: 16px;
+}
+
+.content-box {
+}
+
+.modalhead {
+	margin-top: -5px;
+}
+
+.modalhead img {
+	top: -11px;
+}
+
+.modalfoot img {
+	margin-top: -5px;
+}
+
+div.skinned-select {
+	display: inline;
+}
+
+span.notification {
+	padding-bottom: 3px;
+}
+
+iframe {
+	border: none;
+}
+
+#footer {
+	margin-bottom: -20px;
+}
+
+#header_buttons a img {
+	margin-top: 0;
+	margin-right: 6px;
+}
+
+#login .content-box {
+	width: 300px;
+	margin: 0 auto;
+	text-align: left;
+}
+
+a {
+	outline: 0;
+}
+
+h2 {
+	font-weight: normal;
+}
+
+input[type="submit"] {
+	border: none !important;
+}
+
+.datepicker {
+	padding-left: 24px;
+	text-indent: 0;
+}
+
+.datepickericon {
+	top: 6px;
+}
+
+form span.notification {
+	padding: 5px 10px 5px 30px;
+	top: -3px;
+}
