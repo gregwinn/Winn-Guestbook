@@ -41,19 +41,30 @@ class db {
 		}
 	}
 	
+	function reset(){
+	    $this->where = array();
+    	$this->insert = array();
+    	$this->update = array();
+    	$this->select = '';
+    	$this->insertTable = '';
+    	$this->updateTable = '';
+    	return TRUE;
+	}
+	
+	function __unset($var){
+	    unset($this->$var);
+	}
+	
 	function sanisql($value) {
 	        //----- Stripslashes form magic quotes
 	        if (get_magic_quotes_gpc()) {
 	                $value = stripslashes($value);
 	        }
-
 	        //----- Apply proper quotes if not an interger
 	        if (!is_numeric($value)) {
 	                $value = "'" . mysql_real_escape_string($value) . "'";
 	        }
-
 	        return $value;
-
 	}
 	
 	function insert($table,$data){
