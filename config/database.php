@@ -46,14 +46,15 @@ class db {
     	$this->insert = array();
     	$this->update = array();
     	$this->select = '';
+    	$this->from = '';
     	$this->insertTable = '';
     	$this->updateTable = '';
-    	return TRUE;
+    	return $this;
 	}
 	
-	function __unset($var){
+	/*function __unset($var){
 	    unset($this->$var);
-	}
+	}*/
 	
 	function sanisql($value) {
 	        //----- Stripslashes form magic quotes
@@ -108,11 +109,11 @@ class db {
 	}
 	
 	function getQuery(){
-		if(isset($this->select)){
+		if(!empty($this->select)){
 		    return $this->getSelect();
-		}elseif(isset($this->insertTable)){
+		}elseif(!empty($this->insertTable)){
 		    return $this->getInsert();
-		}elseif(isset($this->updateTable)){
+		}elseif(!empty($this->updateTable)){
 		    return $this->getUpdate();
 		}else{
 		    return FALSE;
@@ -135,10 +136,10 @@ class db {
 	    
 	    $whereQ = $this->whereForm();
 	    
-	    //$q = mysql_query("UPDATE " . $this->updateTable . " SET" . $updateQ . " " . $whereQ . ";");
-	    //return $this->checkforerror($q);
+	    $q = mysql_query("UPDATE " . $this->updateTable . " SET" . $updateQ . " " . $whereQ . ";");
+	    return $q;
 	    // for debug
-	    return "UPDATE " . $this->updateTable . " SET" . $updateQ . " " . $whereQ . ";";
+	    //return "UPDATE " . $this->updateTable . " SET" . $updateQ . " " . $whereQ . ";";
 	}
 	
 	// For Inserts only do not call this direct always use getQuery()
@@ -191,7 +192,7 @@ class db {
 	
 	private function checkforerror($q){
 	    if(!mysql_error($q)){
-	        return TRUE;
+	        return $q;
 	    }else{
 	        return "ERROR";
 	    }

@@ -7,8 +7,7 @@ class Admin extends C {
 	}
 	
 	public function index(){
-		var_dump($_SESSION);
-		exit;
+	    echo $_SESSION['User']['username'];
 		//$this->layout_tamplate = 'views/layouts/admin.php';
 		//echo $this->render('views/admin/index.php');
 	}

@@ -22,6 +22,7 @@ class User extends M {
 	    // Validate that the user is real
 	    $this->db->select('id,username,password')->from('wgb_users')->where('username', $user['username'])->where('password', $user['password']);
 	    $query = $this->db->getQuery();
+	    $this->db->reset();
 	    $num = mysql_num_rows($query);
 	    if($num == 1){
 	        // User was found now set sessions and login
@@ -37,10 +38,8 @@ class User extends M {
 	    // Set the session ID in the database
 	    $data = array('session_id' => session_id());
 	    $this->db->update('wgb_users', $data)->where('id', $user['id']);
-	    $query1 = $this->db->getQuery();
-	    echo "RESULT: ";
-	    var_dump($query1 = mysql_fetch_array($query1));
-	    exit;
+	    $query = $this->db->getQuery();
+	    $this->db->reset();
 	    if($query){
 	        $user['session_id'] = $data['session_id'];
     	    $_SESSION['User'] = $user;
