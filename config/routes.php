@@ -1,6 +1,13 @@
 <?php
 R('')->controller('test')->action('index')->on('GET');
+// Admin related routes
 R('admin')->controller('admin')->action('index')->on('GET');
 R('admin/login')->controller('admin')->action('login')->on('GET');
+R('admin/logout')->controller('admin')->action('logout')->on('GET');
+// POST ONLY
 R('admin/dologin')->controller('admin')->action('dologin')->on('POST');
+
+// Guestbook public routes
+// POST ONLY
+R('gbook/newpost')->controller('gbook')->action('newpost')->on('POST');
 ?>

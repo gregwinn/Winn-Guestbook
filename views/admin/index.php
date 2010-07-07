@@ -1,4 +1,4 @@
-<h2><img src="images/icons/tools_32.png" alt="Dashboard" />Dashboard</h2>
+<h2><img src="images/icons/tools_32.png" alt="Dashboard" />Dashboard [<?php echo $this->User['username']; ?>]</h2>
 <div class="content-box">
 	<div class="content-box-header">
 		<h3>Heading-, paragraph- and list-styles</h3>

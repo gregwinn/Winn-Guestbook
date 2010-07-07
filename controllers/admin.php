@@ -4,16 +4,30 @@ class Admin extends C {
 	
 	function Admin(){
 		$this->UsersModel = new User();
+		$this->User = $_SESSION['User'];
 	}
 	
 	public function index(){
-	    echo $_SESSION['User']['username'];
-		//$this->layout_tamplate = 'views/layouts/admin.php';
-		//echo $this->render('views/admin/index.php');
+		if(!$this->UsersModel->isloggedin()){
+			$this->loginError('You are not logged in');
+		}
+		$this->layout_tamplate = 'views/layouts/admin.php';
+		echo $this->render('views/admin/index.php');
 	}
 	
 	public function login(){
 		echo $this->render('views/admin/login.php');
+	}
+	
+	public function logout(){
+		if($this->UsersModel->isloggedin()){
+			// Log the user out
+			session_destroy();
+			return $this->loginError('Logged out');
+		}else{
+			session_destroy();
+			return $this->loginError('You are not logged in');
+		}
 	}
 	
 	public function dologin(){
@@ -27,16 +41,17 @@ class Admin extends C {
 		    
 		    if($error){
 		        $login = $this->UsersModel->loginUser($_POST);
-		        return $login ? $this->loginFinish() : $this->loginError();
+		        return $login ? $this->loginFinish() : $this->loginError('Login failed, try again');
 		    }else{
-		        return $this->loginError();
+		        return $this->loginError('Username or Password can not be blank');
 		    }
 		    
 		}
 	}
 	
-	function loginError(){
-	    header("Location: guestbook.php?url=admin/login&error=login");
+	function loginError($e = 'Unknown'){
+		$e = urlencode($e);
+	    header("Location: guestbook.php?url=admin/login&error=" . $e);
 	}
 	function loginFinish(){
 	    header("Location: guestbook.php?url=admin");

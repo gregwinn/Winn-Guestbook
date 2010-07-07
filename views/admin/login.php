@@ -10,7 +10,7 @@
 		<div class="content-box-content">
 		    
 		    <?php if(isset($_GET['error'])){ ?>
-		        <div class="notification error">Login failed, try again.</div>
+		        <div class="notification error"><?php isset($_GET['error']) ? print $_GET['error'] : print ''; ?></div>
 		    <?php }else{ ?>
 			    <div class="notification information">Enter your username and password below.</div>
 		    <?php } ?>

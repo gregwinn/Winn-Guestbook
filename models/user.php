@@ -48,5 +48,15 @@ class User extends M {
 	    return FALSE;
 	}
 	
+	
+	// Check to see if the user is loggedin
+	function isloggedin(){
+		if(isset($_SESSION['User']) && session_id() == $_SESSION['User']['session_id']){
+			// User is logged in
+			return TRUE;
+		}
+		return false;
+	}
+	
 }
 ?>
