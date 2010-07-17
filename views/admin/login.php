@@ -27,6 +27,9 @@
 		
 				<input type="submit" value="Login" />
 			</form>
+			
+			<div class="notification information">User: admin | Pass: test123</div>
+			
 		</div>
 	</div><!-- end .content-box -->
 </div><!-- end #login -->

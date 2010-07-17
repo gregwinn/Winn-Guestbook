@@ -1,5 +1,8 @@
 <?php
+include 'models/services.php';
 class Gbook extends C {
+	
+	var $posterrors = array();
 	
 	function Gbook(){
 		
@@ -9,7 +12,26 @@ class Gbook extends C {
 	// NEW POST
 	function newpost(){
 		$postdata = $_POST;
-		var_dump($postdata);
+		foreach($postdata as $key => $value){
+			if(empty($value)){
+				$this->posterrors[$key] = "Empty";
+			}
+		}
+		if(count($this->posterrors) != 0){
+			$this->showerror($this->posterrors);
+			return false;
+		}
+		//var_dump($postdata);
+	}
+	
+	
+	// Error Report
+	function showerror($e){
+		$qstring = '?';
+		foreach($e as $key => $value){
+			$qstring .= $key . '=' . $value . '&';
+		}
+		header("Location: index.php" . $qstring);
 	}
 }
 ?>
