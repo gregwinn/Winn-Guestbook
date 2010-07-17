@@ -20,6 +20,8 @@ class Gbook extends C {
 		if(count($this->posterrors) != 0){
 			$this->showerror($this->posterrors);
 			return false;
+		}else{
+			// The post has no error so we can now send to the database.
 		}
 		//var_dump($postdata);
 	}

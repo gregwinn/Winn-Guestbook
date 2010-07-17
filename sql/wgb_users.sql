@@ -11,7 +11,7 @@
  Target Server Version : 50148
  File Encoding         : utf-8
 
- Date: 07/06/2010 19:46:32 PM
+ Date: 07/17/2010 00:10:50 AM
 */
 
 SET NAMES utf8;
@@ -37,6 +37,6 @@ CREATE TABLE `wgb_users` (
 --  Records of `wgb_users`
 -- ----------------------------
 BEGIN;
-INSERT INTO `wgb_users` VALUES ('1', 'admin', 'greg@winn.ws', 'cc03e747a6afbbcbf8be7668acfebee5', '1', '1', '2010-07-06 19:11:22', '5be604b627b5c2fe5fb116565153ca79');
+INSERT INTO `wgb_users` VALUES ('1', 'admin', 'greg@winn.ws', 'cc03e747a6afbbcbf8be7668acfebee5', '1', '1', '2010-07-06 19:11:22', '84e03eb3f777d44936e039f2ee937fdf');
 COMMIT;
 
