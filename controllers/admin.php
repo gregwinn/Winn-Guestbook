@@ -54,6 +54,7 @@ class Admin extends C {
 	    header("Location: guestbook.php?url=admin/login&error=" . $e);
 	}
 	function loginFinish(){
+		// Redirect to the admin area
 	    header("Location: guestbook.php?url=admin");
 	}
 }

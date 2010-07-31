@@ -14,7 +14,7 @@ $TimeZone = 'America/Chicago';
 $GoogleAnalytics = 'none';
 
 //
-// Your Install directory
+// The web address you view main guestbook index on.
 $GuestBookURL = 'http://yourdomain.tld/guestbook/';
 
 // ========================================

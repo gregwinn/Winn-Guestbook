@@ -3,9 +3,15 @@ include 'models/services.php';
 class Gbook extends C {
 	
 	var $posterrors = array();
+	var $userpostdata = array();
 	
 	function Gbook(){
 		
+	}
+	
+	// Resets
+	private function resetuserpostdata(){
+		$this->userpostdata = array();
 	}
 	
 	// POST only
@@ -24,6 +30,14 @@ class Gbook extends C {
 			// The post has no error so we can now send to the database.
 		}
 		//var_dump($postdata);
+	}
+	
+	// Build userdata array to place in the db.
+	private function userdata($data){
+		foreach($data as $key => $value){
+			$ud = explode("userdata_", $key);
+			$this->userpostdata[$ud[1]] = $value;
+		}
 	}
 	
 	
