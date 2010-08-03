@@ -27,6 +27,7 @@ class db {
 	var $where = array();
 	var $insert = array();
 	var $update = array();
+	var $delete = array();
 	
 	function db(){
 		if ($dbc = @mysql_connect (DBHOST, DBUSER, DBPASS) ) {
@@ -45,9 +46,12 @@ class db {
 	    $this->where = array();
     	$this->insert = array();
     	$this->update = array();
+		$this->delete = array();
     	$this->select = '';
+		$this->delete = '';
     	$this->from = '';
     	$this->insertTable = '';
+		$this->deleteTable = '';
     	$this->updateTable = '';
     	return $this;
 	}
@@ -71,7 +75,7 @@ class db {
 	function insert($table,$data){
 	    $insertArray = $this->insert;
 	    foreach($data as $key => $val){
-	        $insertArray[$key] = $this->sanisql($val);
+	        $insertArray[$key] = $val;
 	    }
 	    $this->insert = $insertArray;
 	    $this->insertTable = $table;
@@ -88,8 +92,9 @@ class db {
 	    return $this;
 	}
 	
-	function delete(){
-	    
+	function delete($table){
+	    $this->deleteTable = $table;
+	    return $this;
 	}
 	
 	function select($val){
@@ -111,6 +116,8 @@ class db {
 	function getQuery(){
 		if(!empty($this->select)){
 		    return $this->getSelect();
+		}elseif(!empty($this->deleteTable)){
+			return $this->getDelete();
 		}elseif(!empty($this->insertTable)){
 		    return $this->getInsert();
 		}elseif(!empty($this->updateTable)){
@@ -142,6 +149,11 @@ class db {
 	    //return "UPDATE " . $this->updateTable . " SET" . $updateQ . " " . $whereQ . ";";
 	}
 	
+	private function getDelete(){
+		$whereQ = $this->whereForm();
+		return mysql_query("DELETE FROM " . $this->deleteTable . " " . $whereQ . ";");
+	}
+	
 	// For Inserts only do not call this direct always use getQuery()
 	private function getInsert(){
 	    $insertQ = '';
@@ -155,7 +167,7 @@ class db {
 	            $insertQ .= " " . $key . " = " . $this->sanisql($val) . ",";
 	        }
 	    }
-	    return mysql_query("INSERT INTO " . $this->insertTable . " SET" . $insertQ . ";");
+	   	return mysql_query("INSERT INTO " . $this->insertTable . " SET" . $insertQ . ";"); 
 	    // for debug
 	    //return "INSERT INTO " . $this->insertTable . " SET" . $insertQ . ";";
 	}
@@ -170,7 +182,6 @@ class db {
 			$whereQ = $this->whereForm();
 			$q = mysql_query("SELECT " . $this->select . " FROM " . $this->from . " " . $whereQ . ";");
 			return $q;
-			mysql_close();
 			// for debug
 			//return "SELECT " . $this->select . " FROM " . $this->from . " " . $whereQ . ";";
 		}

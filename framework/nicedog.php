@@ -34,6 +34,7 @@ class C {
     var $layout_tamplate = 'views/layout.php';
     var $headers;
     
+
     /* Render function return php rendered in a variable */
     public function render($file)
     {

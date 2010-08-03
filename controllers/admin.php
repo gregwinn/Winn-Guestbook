@@ -1,16 +1,20 @@
 <?php
-include 'models/user.php';
 class Admin extends C {
 	
 	function Admin(){
 		$this->UsersModel = new User();
+		$this->ServicesModel = new Services();
 		$this->User = $_SESSION['User'];
 	}
 	
-	public function index(){
+	public function index(){ 
 		if(!$this->UsersModel->isloggedin()){
 			$this->loginError('You are not logged in');
 		}
+		
+		// Check for new posts
+		$this->newposts = $this->ServicesModel->checkForNewPosts();
+		
 		$this->layout_tamplate = 'views/layouts/admin.php';
 		echo $this->render('views/admin/index.php');
 	}

@@ -14,6 +14,16 @@
 		<textarea name="content" id="content"></textarea>
 	</div>
 	
+	<div>
+		<label for="userdata_phone">Userdata Phone</label>
+		<input name="userdata_phone" id="userdata_phone" value="" />
+	</div>
+	
+	<div>
+		<label for="userdata_Address">Userdata Address</label>
+		<input name="userdata_Address" id="userdata_Address" value="" />
+	</div>
+	
 	<input type="submit" value="Post" />
 	
 </form>

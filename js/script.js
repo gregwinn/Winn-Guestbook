@@ -190,7 +190,19 @@ $('document').ready(function() {
 				$(this).remove();
 			});
 			var link = $(this).parent().children("a").attr('href'); // Get the requested link
-			$(this).parent().append('<div class="tooltip"><p>Are you sure?</p><a href="' + link + '">Yes</a> | <a href="#" class="close">No</a></div>'); // Adding the tooltip to the DOM
+			var linkid = $(this).parent().children("a").attr('id');
+			$(this).parent().append('<div class="tooltip"><p>Are you sure?</p><a class="deletepost" href="' + link + '">Yes</a> | <a href="#" class="close">No</a></div>'); // Adding the tooltip to the DOM
+			
+			
+			$(".deletepost").click(function(){
+				$.post('guestbook.php?url=gbook/deletepost', {id: linkid}, function(data){
+					if(data == "TRUE"){
+						$("#newpost_" + linkid).hide();
+					}
+					$("#newpost_" + linkid).css("background-color", "red");
+				});
+			});
+			
 			
 			$('.close').click(function() { // Closing the tooltip
 				$('.tooltip').fadeOut(200, function() {

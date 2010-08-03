@@ -6,6 +6,7 @@ R('admin/login')->controller('admin')->action('login')->on('GET');
 R('admin/logout')->controller('admin')->action('logout')->on('GET');
 // POST ONLY
 R('admin/dologin')->controller('admin')->action('dologin')->on('POST');
+R('gbook/deletepost')->controller('gbook')->action('deletepost')->on('POST');
 
 // Guestbook public routes
 // POST ONLY
