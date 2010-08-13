@@ -35,12 +35,18 @@
 			<?php while($newpostrow = mysql_fetch_array($newposts['data'])){ ?>
 			<tr id="newpost_<?php echo $newpostrow['id']; ?>">
 				<td><input type="checkbox" /></td>
-				<td><a href="#"><?php echo $newpostrow['name']; ?></a></td>
+				<td><?php echo $newpostrow['name']; ?></td>
 				<td><?php echo $newpostrow['email']; ?></td>
 				<td><?php echo date("D, M jS Y", strtotime($newpostrow['created_at'])) ;?></td>
 				<td>
-					<a href="#"><img src="images/icons/pencil.png" alt="Edit" /></a>
+					<a class="editpost" href="#"><img src="images/icons/pencil.png" alt="Edit" /></a>
 					<a href="#" id="<?php echo $newpostrow['id']; ?>" class="confirmation"><img src="images/icons/cross.png" alt="Delete" /></a><!-- to create a tooltip-style confirmation, just add .confirmation to the <a>-tag -->
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5">
+					<h6 style="display:inline;">Post Content: </h6>
+					<span id="newpost_content_<?php echo $newpostrow['id']; ?>"><?php echo $newpostrow['content']; ?></span>
 				</td>
 			</tr>
 			<?php } ?>

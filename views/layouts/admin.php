@@ -22,7 +22,7 @@
 		
 		<!-- JavaScript -->
 		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
-		<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.4.custom.min.js"></script>
 		<script type="text/javascript" src="js/jquery.wysiwyg.js"></script>
 		<script type="text/javascript" src="js/jquery.rounded.js"></script>
 		<script type="text/javascript" src="js/excanvas.js"></script>
@@ -139,7 +139,7 @@
 						</a>
 						
 						<ul>
-							<li><a href="#">Account Settings</a></li>
+							<li><a href="?url=admin/settings">Account Settings</a></li>
 							<li><a href="#">Guestbook Settings</a></li>
 						</ul>
 					</li>

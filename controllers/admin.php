@@ -19,6 +19,11 @@ class Admin extends C {
 		echo $this->render('views/admin/index.php');
 	}
 	
+	public function settings(){
+		$this->layout_tamplate = 'views/layouts/admin.php';
+		echo $this->render('views/admin/settings.php');
+	}
+	
 	public function login(){
 		echo $this->render('views/admin/login.php');
 	}

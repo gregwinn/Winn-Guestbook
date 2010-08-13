@@ -2,6 +2,7 @@
 R('')->controller('test')->action('index')->on('GET');
 // Admin related routes
 R('admin')->controller('admin')->action('index')->on('GET');
+R('admin/settings')->controller('admin')->action('settings')->on('GET');
 R('admin/login')->controller('admin')->action('login')->on('GET');
 R('admin/logout')->controller('admin')->action('logout')->on('GET');
 // POST ONLY
