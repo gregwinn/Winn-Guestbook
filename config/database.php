@@ -28,6 +28,7 @@ class db {
 	var $insert = array();
 	var $update = array();
 	var $delete = array();
+	var $order = '';
 	
 	function db(){
 		if ($dbc = @mysql_connect (DBHOST, DBUSER, DBPASS) ) {
@@ -47,6 +48,7 @@ class db {
     	$this->insert = array();
     	$this->update = array();
 		$this->delete = array();
+		$this->order = '';
     	$this->select = '';
 		$this->delete = '';
     	$this->from = '';
@@ -95,6 +97,11 @@ class db {
 	function delete($table){
 	    $this->deleteTable = $table;
 	    return $this;
+	}
+	
+	function order($val){
+		$this->order = " ORDER BY " . $val;
+		return $this;
 	}
 	
 	function select($val){
@@ -175,12 +182,12 @@ class db {
 	// For Select only do not call this direct always use getQuery()
 	private function getSelect(){
 	    if(count($this->where) == 0){
-			return mysql_query("SELECT " . $this->select . " FROM " . $this->from . ";");
+			return mysql_query("SELECT " . $this->select . " FROM " . $this->from . $this->order . ";");
 			// for debug
 			//return "SELECT " . $this->select . " FROM " . $this->from . ";";
 		}else{
 			$whereQ = $this->whereForm();
-			$q = mysql_query("SELECT " . $this->select . " FROM " . $this->from . " " . $whereQ . ";");
+			$q = mysql_query("SELECT " . $this->select . " FROM " . $this->from . " " . $whereQ . $this->order . ";");
 			return $q;
 			// for debug
 			//return "SELECT " . $this->select . " FROM " . $this->from . " " . $whereQ . ";";

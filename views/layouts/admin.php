@@ -38,7 +38,7 @@
 				
 				<div id="header_buttons">
 					
-					<a href="#modal" rel="modal"><img src="images/icons/envelope.png" alt="3 Messages" />3</a>
+					<a href="#modal" rel="modal"><img src="images/icons/envelope.png" alt="3 Messages" /><?php echo $newposts['datacount']; ?></a>
 					<a href="#modal2" rel="modal">modal box test</a>
 					<a href="<?php echo GBURL; ?>">view website</a>
 					<a href="?url=admin/logout">logout</a>

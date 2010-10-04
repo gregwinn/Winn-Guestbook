@@ -1,6 +1,6 @@
-<?php if($newposts){ ?>
+<?php if($activeposts){ ?>
 <div class="content-box-header">
-	<h3>New Posts! (<?php echo $newposts['datacount']; ?>)</h3>
+	<h3>New Posts! (<?php echo $activeposts['datacount']; ?>)</h3>
 </div>
 
 <div class="content-box-content">
@@ -32,7 +32,7 @@
 		</tfoot>
 				
 		<tbody>
-			<?php while($newpostrow = mysql_fetch_array($newposts['data'])){ ?>
+			<?php while($newpostrow = mysql_fetch_array($activeposts['data'])){ ?>
 			<tr class="newpost_<?php echo $newpostrow['id']; ?>" id="newpost_<?php echo $newpostrow['id']; ?>">
 				<td><input type="checkbox" /></td>
 				<td><?php echo $newpostrow['name']; ?></td>

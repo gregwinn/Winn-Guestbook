@@ -8,7 +8,7 @@ class Admin extends C {
 	}
 	
 	public function index(){ 
-		if(!$this->UsersModel->isloggedin()){
+		if(!$this->UsersModel->isloggedin()){ // Validate the user
 			$this->loginError('You are not logged in');
 		}
 		
@@ -17,6 +17,19 @@ class Admin extends C {
 		
 		$this->layout_tamplate = 'views/layouts/admin.php';
 		echo $this->render('views/admin/index.php');
+	}
+	
+	// Active Posts page
+	function activeposts(){
+		if(!$this->UsersModel->isloggedin()){ // Validate the user
+			$this->loginError('You are not logged in');
+		}
+		
+		// Query for active posts
+		$this->activeposts = $this->ServicesModel->getActivePosts();
+		
+		$this->layout_tamplate = 'views/layouts/admin.php';
+		echo $this->render('views/admin/active.php');
 	}
 	
 	public function settings(){

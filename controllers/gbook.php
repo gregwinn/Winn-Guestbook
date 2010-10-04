@@ -75,6 +75,15 @@ class Gbook extends C {
 		header("Location: index.php" . $qstring);
 	}
 	
+	// Approve Post
+	function approvepost(){
+		$id = $_POST['postid'];
+		if(!$this->UsersModel->isloggedin()){
+			header("Location: guestbook.php?url=admin/login");
+		}
+		$this->ServicesModel->approvePost($id);
+		echo "TRUE";
+	}
 	
 	// POST ONLY
 	function deletepost(){
