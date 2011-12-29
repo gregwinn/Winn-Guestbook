@@ -58,4 +58,12 @@
 	<div class="clear"></div>
 	
 </div>
+<?php }else{?>
+	<div class="content-box-header">
+		<h3>No approved posts :(</h3>
+	</div>
+
+	<div class="content-box-content">
+		<p>Sorry, no approved posts at this time.</p>
+	</div>
 <?php } ?>
