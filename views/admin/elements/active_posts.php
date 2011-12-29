@@ -47,7 +47,7 @@
 			<tr class="newpost_<?php echo $newpostrow['id']; ?>">
 				<td colspan="5">
 					<h6 style="display:inline;">Post Content: </h6>
-					<span id="newpost_content_<?php echo $newpostrow['id']; ?>"><?php echo $newpostrow['content']; ?></span>
+					<span id="newpost_content_<?php echo $newpostrow['id']; ?>"><?php echo $newpostrow['message']; ?></span>
 				</td>
 			</tr>
 			<?php } ?>

@@ -10,18 +10,8 @@
 	</div>
 	
 	<div>
-		<label for="content">Message:</label>
-		<textarea name="content" id="content"></textarea>
-	</div>
-	
-	<div>
-		<label for="userdata_phone">Userdata Phone</label>
-		<input name="userdata_phone" id="userdata_phone" value="" />
-	</div>
-	
-	<div>
-		<label for="userdata_Address">Userdata Address</label>
-		<input name="userdata_Address" id="userdata_Address" value="" />
+		<label for="message">Message:</label>
+		<textarea name="message" id="message"></textarea>
 	</div>
 	
 	<input type="submit" value="Post" />

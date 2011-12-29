@@ -34,7 +34,8 @@ class Gbook extends C {
 			}
 		}
 		
-		$this->userdata($_POST);
+		// Userdata not ready yet
+		//$this->userdata($_POST);
 		//var_dump($this->userpostdata);
 		
 		if(count($this->posterrors) != 0){
@@ -48,9 +49,9 @@ class Gbook extends C {
 			foreach($this->userpostdata as $key => $val){
 				$InsertArray['userdata'] .= $key . "=>" . $val . ",";
 			}
-			$this->ServicesModel->insertPost($InsertArray);
+			echo $this->ServicesModel->insertPost($InsertArray);
 		}
-		//var_dump($postdata);
+		//var_dump($InsertArray);
 	}
 	
 	// Build userdata array to place in the db.

@@ -40,14 +40,14 @@
 				<td><?php echo date("D, M jS Y", strtotime($newpostrow['created_at'])) ;?></td>
 				<td>
 					<a class="approvepost" href="#" id="<?php echo $newpostrow['id']; ?>"><img src="images/icons/plus.png" alt="Approve" /></a>
-					<a class="editpost" href="#"><img src="images/icons/pencil.png" alt="Edit" /></a>
+					<a class="editpost" href="?url=admin/edit/<?php echo $newpostrow['id']; ?>"><img src="images/icons/pencil.png" alt="Edit" /></a>
 					<a href="#" id="<?php echo $newpostrow['id']; ?>" class="confirmation"><img src="images/icons/cross.png" alt="Delete" /></a><!-- to create a tooltip-style confirmation, just add .confirmation to the <a>-tag -->
 				</td>
 			</tr>
 			<tr class="newpost_<?php echo $newpostrow['id']; ?>">
 				<td colspan="5">
 					<h6 style="display:inline;">Post Content: </h6>
-					<span id="newpost_content_<?php echo $newpostrow['id']; ?>"><?php echo $newpostrow['content']; ?></span>
+					<span id="newpost_content_<?php echo $newpostrow['id']; ?>"><?php echo $newpostrow['message']; ?></span>
 				</td>
 			</tr>
 			<?php } ?>

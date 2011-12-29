@@ -4,7 +4,8 @@ class Admin extends C {
 	function Admin(){
 		$this->UsersModel = new User();
 		$this->ServicesModel = new Services();
-		$this->User = $_SESSION['User'];
+		$this->PostModel = new Post();
+		$this->User = isset($_SESSION['User']) ? $_SESSION['User'] : false;
 	}
 	
 	public function index(){ 
@@ -30,6 +31,17 @@ class Admin extends C {
 		
 		$this->layout_tamplate = 'views/layouts/admin.php';
 		echo $this->render('views/admin/active.php');
+	}
+	
+	function edit($id){
+		if(!$this->UsersModel->isloggedin()){ // Validate the user
+			$this->loginError('You are not logged in');
+		}
+		
+		$this->posts = $this->PostModel->find($id);
+		
+		$this->layout_tamplate = 'views/layouts/admin.php';
+		echo $this->render('views/admin/edit.php');
 	}
 	
 	public function settings(){

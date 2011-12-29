@@ -34,6 +34,7 @@ class Services extends M {
 		return FALSE;
 	}
 	
+	
 	function approvePost($id){
 		$data = array('status' => 2);
 		$this->db->update('wgb_posts',$data)->where('id', $id);

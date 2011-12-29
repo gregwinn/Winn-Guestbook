@@ -6,6 +6,7 @@ R('admin/settings')->controller('admin')->action('settings')->on('GET');
 R('admin/login')->controller('admin')->action('login')->on('GET');
 R('admin/logout')->controller('admin')->action('logout')->on('GET');
 R('admin/active')->controller('admin')->action('activeposts')->on('GET');
+R('admin/edit/(?P<id>[-\w]+)')->controller('admin')->action('edit')->on('GET');
 
 // POST ONLY
 R('admin/dologin')->controller('admin')->action('dologin')->on('POST');
