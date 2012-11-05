@@ -50,6 +50,7 @@ class Admin extends C {
 	}
 	
 	public function login(){
+		$this->layout_tamplate = 'views/layouts/login.php';
 		echo $this->render('views/admin/login.php');
 	}
 	

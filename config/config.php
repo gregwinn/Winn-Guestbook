@@ -1,6 +1,6 @@
 <?php
 // Database Settings
-$HOST_w = "localhost"; // <--- 99% chance you will not need to change this
+$HOST_w = "127.0.0.1"; // <--- 99% chance you will not need to change this
 $USER_w = "root"; // <--- DB Username
 $PASS_w = ""; // <--- DB Password
 $DATAB_w = "winnguestbook_25"; // <--- The Database name

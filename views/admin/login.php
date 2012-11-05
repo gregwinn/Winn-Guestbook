@@ -1,35 +1,10 @@
-<h2><img src="images/icons/user_32.png" alt="Login" />Login</h2>
+<form class="form-signin" action="guestbook.php?url=admin/dologin" method="post">
+	<h2 class="form-signin-heading">Please sign in</h2>
 
-<div id="login">
+	<input name="username" id="username" class="input-block-level" type="text" placeholder="Username" />
+	<input name="password" id="password" type="password" class="input-block-level" placeholder="Password" />
 	
-	<div class="content-box">
-		<div class="content-box-header">
-			<h3>Login</h3>
-		</div>
-	
-		<div class="content-box-content">
-		    
-		    <?php if(isset($_GET['error'])){ ?>
-		        <div class="notification error"><?php isset($_GET['error']) ? print $_GET['error'] : print ''; ?></div>
-		    <?php }else{ ?>
-			    <div class="notification information">Enter your username and password below.</div>
-		    <?php } ?>
-			<form action="guestbook.php?url=admin/dologin" method="post">
-				<p>
-					<label>Username</label>
-					<input name="username" id="username" type="text" />
-				</p>
-		
-				<p>
-					<label>Password</label>
-					<input name="password" id="password" type="password" />
-				</p>
-		
-				<input type="submit" value="Login" />
-			</form>
-			
-			<div class="notification information">User: admin | Pass: test123</div>
-			
-		</div>
-	</div><!-- end .content-box -->
-</div><!-- end #login -->
+	<input type="submit" value="Login" class="btn btn-large btn-primary" />
+
+	<p>User: admin | Pass: test123</p>
+</form>
