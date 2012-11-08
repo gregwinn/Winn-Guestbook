@@ -7,6 +7,13 @@ class Services extends M {
 	    $this->db->reset();
 		return $query;
 	}
+
+	function updatePost($data){
+		$this->db->update('wgb_posts', $data)->where('id', $data['id']);
+		$query = $this->db->getQuery();
+	    $this->db->reset();
+		return $query;
+	}
 	
 	function checkForNewPosts($status = 1){
 		$this->db->select('*')->from('wgb_posts')->where('status', $status)->order('created_at DESC');

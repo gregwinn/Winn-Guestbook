@@ -53,6 +53,39 @@ class Gbook extends C {
 		}
 		//var_dump($InsertArray);
 	}
+
+	function updatepost(){
+		$postdata = $_POST;
+		foreach($postdata as $key => $value){
+			if(empty($value)){
+				$this->posterrors[$key] = "Empty";
+			}
+			
+			// Validate the email address
+			if($key == "email"){
+				$emailcheck = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+				if(!$emailcheck){
+					$this->posterrors[$key] = "Email address is invalid";
+				}else{
+					$_POST['email'] = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+				}
+			}
+		}
+
+		if(count($this->posterrors) != 0){
+			$this->showerror($this->posterrors);
+			return false;
+		}else{
+			// The post has no error so we can now send to the database.
+			$postdata = $_POST; 
+			$postdata['userdata'] = '';
+			foreach($this->userpostdata as $key => $val){
+				$postdata['userdata'] .= $key . "=>" . $val . ",";
+			}
+			$this->ServicesModel->updatePost($postdata);
+			header("Location: guestbook.php?url=admin/edit/" . $_POST['id']);
+		}
+	}
 	
 	// Build userdata array to place in the db.
 	function userdata($data){
@@ -76,7 +109,7 @@ class Gbook extends C {
 		header("Location: index.php" . $qstring);
 	}
 	
-	// Approve Post
+	// Approve Post (POST)
 	function approvepost(){
 		$id = $_POST['postid'];
 		if(!$this->UsersModel->isloggedin()){
@@ -84,6 +117,15 @@ class Gbook extends C {
 		}
 		$this->ServicesModel->approvePost($id);
 		echo "TRUE";
+	}
+
+	// Approve Post (GET)
+	function approvepost_get($id){
+		if(!$this->UsersModel->isloggedin()){
+			header("Location: guestbook.php?url=admin/login");
+		}
+		$this->ServicesModel->approvePost($id);
+		header("Location: guestbook.php?url=admin");
 	}
 	
 	// POST ONLY

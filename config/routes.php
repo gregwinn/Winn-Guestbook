@@ -8,6 +8,8 @@ R('admin/logout')->controller('admin')->action('logout')->on('GET');
 R('admin/active')->controller('admin')->action('activeposts')->on('GET');
 R('admin/edit/(?P<id>[-\w]+)')->controller('admin')->action('edit')->on('GET');
 
+R('admin/approvepost_get/(?P<id>[-\w]+)')->controller('gbook')->action('approvepost_get')->on('GET');
+
 // POST ONLY
 R('admin/dologin')->controller('admin')->action('dologin')->on('POST');
 R('gbook/deletepost')->controller('gbook')->action('deletepost')->on('POST');
@@ -16,4 +18,5 @@ R('gbook/approvepost')->controller('gbook')->action('approvepost')->on('POST');
 // Guestbook public routes
 // POST ONLY
 R('gbook/newpost')->controller('gbook')->action('newpost')->on('POST');
+R('gbook/updatepost')->controller('gbook')->action('updatepost')->on('POST');
 ?>

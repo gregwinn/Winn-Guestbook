@@ -65,34 +65,17 @@
 
 		<div class="container">
 			
-			<div id="header">
-				<h1 id="logo">Admin Control Panel </h1>
-				
-				<div id="header_buttons">
+			<?php echo $content; ?>
 					
-					<a href="#modal" rel="modal"><img src="images/icons/envelope.png" alt="3 Messages" /><?php echo $newposts['datacount']; ?></a>
-					<a href="#modal2" rel="modal">modal box test</a>
-					<a href="<?php echo GBURL; ?>">view website</a>
-					<a href="?url=admin/logout">logout</a>
-					
-				</div><!-- end #header_buttons -->
-				
-			</div><!-- end #header -->
-			
-			<div class="row">
-				<div class="span12">
-			
-					<?php echo $content; ?>
-					
-				</div><!-- end #content -->
-			</div>
-			
 		</div>
 
 		
 		<div class="container">
-
-			&copy; Copyright <?php echo date("Y"); ?> Winn Guestbook (<?php echo LONG_VERSION_NUMBER ?>), a product of <a href="http://winn.ws">Winn.ws</a>. Need support? Contact me on the <a href="http://code.google.com/p/winn-guestbook/">project page</a>.
+			<div class="row">
+				<div class="span12">
+					<p>&copy; Copyright <?php echo date("Y"); ?> Winn Guestbook (<?php echo LONG_VERSION_NUMBER ?>), a product of <a href="http://winn.ws">Winn.ws</a>. Need support? Contact me on the <a href="http://code.google.com/p/winn-guestbook/">project page</a>.</p>
+				</div>
+			</div>
 		</div><!-- end #footer -->
 
 	</div></body>
